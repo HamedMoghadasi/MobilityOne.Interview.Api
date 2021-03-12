@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "b619bed3-88c3-4a83-b8d5-2181e813a3bf",
+		"name": "MobilityOne.Interview.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Get All Users."
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/users/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"users",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"HooHoo\",\r\n    \"phoneNumber\": \"+989191677925\",\r\n    \"emailAddress\": \"Shahrzad@gmail.com\",\r\n    \"password\": \"0017169461\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Add new user."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/users/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"users",
+						"6"
+					]
+				},
+				"description": "Delete user."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 7,\r\n    \"name\": \"HoooHoooHooo\",\r\n    \"phoneNumber\": \"+989999999999\",\r\n    \"emailAddress\": \"Shahrzad@gmail.com\",\r\n    \"password\": \"0017169461\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Edit user."
+			},
+			"response": []
+		}
+	]
+}
