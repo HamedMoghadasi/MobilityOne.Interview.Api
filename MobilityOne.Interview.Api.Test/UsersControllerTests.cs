@@ -82,14 +82,16 @@ namespace MobilityOne.Interview.Api.Test
         public void Add_ValidObject_OneItemMustAdded()
         {
             // Arrange
-            var newUser = new User { 
+            var newUser = new User
+            {
                 Name = "Majid",
                 PhoneNumber = "+989197558635",
                 EmailAddress = "Majid@gmail.com",
                 Password = "123456",
-                Suspended = false, 
-                CreateDate = DateTime.Now, 
-                LastLogin = DateTime.Now };
+                Suspended = false,
+                CreateDate = DateTime.Now,
+                LastLogin = DateTime.Now
+            };
             // Act
             _controller.Post(newUser);
 

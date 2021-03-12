@@ -3,7 +3,6 @@ using MobilityOne.Interview.Api.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MobilityOne.Interview.Api.Test.FakeRepositories
 {
@@ -29,12 +28,13 @@ namespace MobilityOne.Interview.Api.Test.FakeRepositories
         public User GetById(int id)
         {
             return _users.FirstOrDefault(a => a.Id == id);
-            
+
         }
 
         public void Add(User user)
         {
-            if (user.Id == null) { 
+            if (user.Id == null)
+            {
                 var lastId = _users.OrderBy(item => item.Id).Last().Id;
                 user.Id = lastId + 1;
             }
