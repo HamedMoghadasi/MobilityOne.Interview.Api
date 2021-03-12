@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobilityOne.Interview.Api.Models;
 using MobilityOne.Interview.Api.Repositories.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,21 +20,29 @@ namespace MobilityOne.Interview.Api.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
             return Ok(_userRepository.GetAll());
         }
 
         // GET api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public ActionResult<User> Get(int id)
         {
-            return Ok(_userRepository.GetById(id));
+            var user = _userRepository.GetById(id);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound("User not founded!");
+            }
         }
 
         // POST api/Users
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] User user)
+        public ActionResult Post([FromBody] User user)
         {
             _userRepository.Add(user);
             _userRepository.SaveChanges();
@@ -42,7 +51,7 @@ namespace MobilityOne.Interview.Api.Controllers
 
         // PUT api/Users/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] User user)
+        public ActionResult Put([FromBody] User user)
         {
             _userRepository.Edit(user);
             _userRepository.SaveChanges();
@@ -51,7 +60,7 @@ namespace MobilityOne.Interview.Api.Controllers
 
         // DELETE api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public ActionResult Delete(int id)
         {
             var user = _userRepository.GetById(id);
             if (user != null)
@@ -60,8 +69,9 @@ namespace MobilityOne.Interview.Api.Controllers
                 _userRepository.SaveChanges();
                 return Ok("User deleteed successfully!");
             }
-            else {
-                return NotFound("User not found!");
+            else
+            {
+                return NotFound("User not founded!");
             }
         }
     }
