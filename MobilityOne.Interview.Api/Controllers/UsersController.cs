@@ -45,7 +45,7 @@ namespace MobilityOne.Interview.Api.Controllers
         {
             _userRepository.Add(user);
             _userRepository.SaveChanges();
-            return Ok("User added successfully!");
+            return Ok(user);
         }
 
         // PUT api/Users/5

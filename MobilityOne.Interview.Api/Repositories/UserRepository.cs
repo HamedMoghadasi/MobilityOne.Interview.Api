@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MobilityOne.Interview.Api.Models;
 using MobilityOne.Interview.Api.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,6 +26,8 @@ namespace MobilityOne.Interview.Api.Repositories
 
         public void Add(User user)
         {
+            user.LastLogin = DateTimeOffset.UtcNow;
+            user.CreateDate = DateTimeOffset.UtcNow;
             _context.Users.Add(user);
         }
 

@@ -22,6 +22,7 @@ namespace MobilityOne.Interview.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -38,7 +39,7 @@ namespace MobilityOne.Interview.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
 
             app.UseRouting();
