@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MobilityOne.Interview.Api.Common;
 using MobilityOne.Interview.Api.Controllers;
 using MobilityOne.Interview.Api.Models;
 using MobilityOne.Interview.Api.Repositories.Interfaces;
@@ -37,18 +38,19 @@ namespace MobilityOne.Interview.Api.Test
             var okResult = _controller.Get().Result as OkObjectResult;
 
             // Assert
-            var items = Assert.IsType<List<User>>(okResult.Value);
-            Assert.Equal(3, items.Count);
+            var items = Assert.IsType<Response>(okResult.Value);
+            var countOfUsers = (items.Data as IEnumerable<User>).Count();
+            Assert.Equal(3, countOfUsers);
         }
 
         [Fact]
         public void GetById_UnknownIdPassed_ReturnsNoContentResult()
         {
             // Act
-            var notFoundResult = _controller.Get(-22);
+            var result = _controller.Get(-22);
 
             // Assert
-            Assert.IsType<NotFoundObjectResult>(notFoundResult.Result);
+            Assert.IsType<BadRequestObjectResult>(result.Result);
         }
 
         [Fact]
@@ -72,10 +74,9 @@ namespace MobilityOne.Interview.Api.Test
 
             // Act
             var okResult = _controller.Get(existingId).Result as OkObjectResult;
-
+            var user = (okResult.Value as Response).Data as User;
             // Assert
-            Assert.IsType<User>(okResult.Value);
-            Assert.Equal(existingId, (okResult.Value as User).Id);
+            Assert.Equal(existingId, user.Id);
         }
 
         [Fact]
@@ -93,7 +94,7 @@ namespace MobilityOne.Interview.Api.Test
                 LastLogin = DateTime.Now
             };
             // Act
-            _controller.Post(newUser);
+            _controller.Add(newUser);
 
             // Assert
             Assert.Equal(4, _repository.GetAll().Count());
@@ -116,7 +117,7 @@ namespace MobilityOne.Interview.Api.Test
             };
 
             // Act
-            _controller.Put(user);
+            _controller.Update(user);
 
             // Assert
             var editedUser = _repository.GetById(1);

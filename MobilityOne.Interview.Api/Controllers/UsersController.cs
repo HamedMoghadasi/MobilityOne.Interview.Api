@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MobilityOne.Interview.Api.Common;
 using MobilityOne.Interview.Api.Models;
 using MobilityOne.Interview.Api.Repositories.Interfaces;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace MobilityOne.Interview.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
-            return Ok(_userRepository.GetAll());
+            var users = _userRepository.GetAll();
+            return Ok(new Response {Message = "All users fetched successfully!", Data = users });
         }
 
         // GET api/Users/5
@@ -31,30 +33,30 @@ namespace MobilityOne.Interview.Api.Controllers
             var user = _userRepository.GetById(id);
             if (user != null)
             {
-                return Ok(user);
+                return Ok(new Response{Message="All users fetched successfully!", Data= user});
             }
             else
             {
-                return NotFound("User not founded!");
+                return BadRequest(new Response {Status=ResponseStatus.Error,Message="User not founded!"});
             }
         }
 
         // POST api/Users
         [HttpPost]
-        public ActionResult Post([FromBody] User user)
+        public ActionResult Add([FromBody] User user)
         {
             _userRepository.Add(user);
             _userRepository.SaveChanges();
-            return Ok(user);
+            return Ok(new Response { Message ="User added successfully!",Data=user});
         }
 
         // PUT api/Users/5
         [HttpPut]
-        public ActionResult Put([FromBody] User user)
+        public ActionResult Update([FromBody] User user)
         {
             _userRepository.Edit(user);
             _userRepository.SaveChanges();
-            return Ok("User edited successfully!");
+            return Ok(new Response {Message= "User edited successfully!" });
         }
 
         // DELETE api/Users/5
@@ -66,11 +68,11 @@ namespace MobilityOne.Interview.Api.Controllers
             {
                 _userRepository.Delete(user);
                 _userRepository.SaveChanges();
-                return Ok("User deleteed successfully!");
+                return Ok(new Response { Message = "User deleteed successfully!" });
             }
             else
             {
-                return NotFound("User not founded!");
+                return BadRequest(new Response { Status = ResponseStatus.Error, Message = "User not founded!" });
             }
         }
     }
