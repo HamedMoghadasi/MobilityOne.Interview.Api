@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b619bed3-88c3-4a83-b8d5-2181e813a3bf",
-		"name": "MobilityOne.Interview.Api",
+		"name": "MobilityOne.Interview.Api-dotNetCore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,12 +15,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/users",
-					"protocol": "https",
+					"raw": "{{dotnet-url}}/api/users",
 					"host": [
-						"localhost"
+						"{{dotnet-url}}"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"users"
@@ -40,16 +38,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/users/5",
-					"protocol": "https",
+					"raw": "{{dotnet-url}}/api/users/48",
 					"host": [
-						"localhost"
+						"{{dotnet-url}}"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"users",
-						"5"
+						"48"
 					]
 				}
 			},
@@ -69,15 +65,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"HooHoo\",\r\n    \"phoneNumber\": \"+989191677925\",\r\n    \"emailAddress\": \"Shahrzad@gmail.com\",\r\n    \"password\": \"0017169461\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
+					"raw": "{\r\n    \"name\": \"foo\",\r\n    \"phoneNumber\": \"+989191677925\",\r\n    \"emailAddress\": \"foo@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/users",
-					"protocol": "https",
+					"raw": "{{dotnet-url}}/api/users",
 					"host": [
-						"localhost"
+						"{{dotnet-url}}"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"users"
@@ -97,16 +91,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/users/6",
-					"protocol": "https",
+					"raw": "{{dotnet-url}}/api/users/5352525252",
 					"host": [
-						"localhost"
+						"{{dotnet-url}}"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"users",
-						"6"
+						"5352525252"
 					]
 				},
 				"description": "Delete user."
@@ -127,15 +119,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": 7,\r\n    \"name\": \"HoooHoooHooo\",\r\n    \"phoneNumber\": \"+989999999999\",\r\n    \"emailAddress\": \"Shahrzad@gmail.com\",\r\n    \"password\": \"0017169461\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
+					"raw": "{\r\n\t\"id\":53,\r\n    \"name\": \"foofoo\",\r\n    \"phoneNumber\": \"+989191677925\",\r\n    \"emailAddress\": \"foo@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"lastLogin\": \"2020-01-01T00:00:00+03:30\",\r\n    \"createDate\": \"2020-01-01T00:00:00+03:30\",\r\n    \"suspended\": false\r\n}"
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/users",
-					"protocol": "https",
+					"raw": "{{dotnet-url}}/api/users",
 					"host": [
-						"localhost"
+						"{{dotnet-url}}"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"users"
